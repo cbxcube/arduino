@@ -1,0 +1,38 @@
+source: https://arduino8.webnode.cz/news/lekce-10-arduino-a-i2c-lcd/
+
+lib download: https://drive.google.com/drive/folders/0B3zDjPrpMsPab3BWT2Etd05nRGM
+
+
+error: 
+
+Arduino: 1.8.13 (Linux), Board: "Arduino Uno"
+
+
+
+
+
+
+
+
+
+
+
+/home/cubic/gpio/arduino/tutorialcz/lcd/lcd.ino: In function 'void setup()':
+lcd:10:12: error: 'int LiquidCrystal_I2C::init()' is private within this context
+   lcd.init();// inicializuje displej
+            ^
+In file included from /home/cubic/gpio/arduino/tutorialcz/lcd/lcd.ino:2:0:
+/home/cubic/Arduino/libraries/New-LiquidCrystal-master/LiquidCrystal_I2C.h:154:9: note: declared private here
+    int  init();
+         ^~~~
+Multiple libraries were found for "LiquidCrystal_I2C.h"
+ Used: /home/cubic/Arduino/libraries/New-LiquidCrystal-master
+ Not used: /home/cubic/Arduino/libraries/drive-download-20201019T192728Z-001
+exit status 1
+'int LiquidCrystal_I2C::init()' is private within this context
+
+
+This report would have more information with
+"Show verbose output during compilation"
+option enabled in File -> Preferences.
+

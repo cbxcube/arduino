@@ -1,0 +1,2 @@
+- analog thermo sensor with a wire LM35DZ
+- lcd 16x2 LiquidCrystal_I2C

@@ -1,0 +1,6 @@
+instructions: https://navody.arduino-shop.cz/navody-k-produktum/ultrazvukovy-meric-vzdalenosti-hy-srf05.html
+
+
+
+- 1x Měřič vzdálenosti ultrazvukový 5Pin HY-SRF05 pro Arduino: https://arduino-shop.cz/arduino/1735-meric-vzdalenosti-ultrazvukovy-5pin-hy-srf05-pro-arduino.html
+
