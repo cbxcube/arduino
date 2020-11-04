@@ -4,6 +4,9 @@
 #include <NewPing.h>
 // load library for lcd 16x2 i2c
 #include <LiquidCrystal_I2C.h>
+// load library for servo
+#include <Servo.h>    
+
 
 // nastavení propojovacích pinů - ultrazvuk
 #define pinTrigger    3
@@ -15,6 +18,9 @@ NewPing sonar(pinTrigger, pinEcho, maxVzdalenost);
 // inicializace displaya na I2C adrese 0x27
 // 0x27 and 16 characters in 2 lines
 LiquidCrystal_I2C lcd(0x27,16,2);  
+// initialize servo
+Servo myservo; 
+
 
 void setup() {
   // zahájení komunikace po sériové lince
@@ -22,11 +28,16 @@ void setup() {
   // inicializacia displaya
   lcd.init();// initialise display
   lcd.backlight(); // backlight on
+  // pin for servo - pin 9 for this motor
+  myservo.attach(9);  
+
 }
 
 void loop() {
   // načtení vzdálenosti v centimetrech do vytvořené proměnné vzdalenost
   int vzdalenost = sonar.ping_cm();
+  // variable for initial servo position - angle
+  int pos = 0; 
   // pauza před dalším měřením
   delay(50);
   // pokud byla detekována vzdálenost větší než 0,
@@ -38,6 +49,14 @@ void loop() {
     for (int i = 0; i < 5; i++) {
       vzdalenost += sonar.ping_cm();
       delay(50);
+    }
+    for(pos = 0; pos <= 180; pos += 1) { //je od úhlu 0 do úhlu 180
+      myservo.write(pos);  //natočení motoru na aktuální úhel
+      delay(15);           //chvilka čekání než se motor natočí
+    } 
+    for(pos = 180; pos >= 0; pos -= 1) { //je od úhlu 180 zpět do úhlu 0
+      myservo.write(pos);  //natočení motoru na aktuální úhel
+      delay(15);           //chvilka čekání než se motor natočí
     }
     // v proměnné vzdálenost máme součet posledních 5 měření
     // a musíme tedy provést dělení 5 pro získání průměru
